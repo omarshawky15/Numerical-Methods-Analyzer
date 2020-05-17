@@ -22,7 +22,7 @@ function varargout = UI(varargin)
 
 % Edit the above text to modify the response to help UI
 
-% Last Modified by GUIDE v2.5 17-May-2020 01:15:46
+% Last Modified by GUIDE v2.5 17-May-2020 22:01:33
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -221,8 +221,9 @@ Xlower =  handles.x1.String ;
 Xupper = handles.x2.String ;
 func = handles.func.String;
 root = Main(func,methodName , nOfItr ,percision,Xlower,Xupper);
-str = ['root = '  char(root)];
-set(handles.ans,'String',str);
+set(handles.dataTable,'data',root);
+%str = ['root = '  char(root)];
+%set(handles.ans,'String',str);
 function itr_Callback(hObject, eventdata, handles)
 % hObject    handle to itr (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -243,3 +244,11 @@ function itr_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes during object creation, after setting all properties.
+function dataTable_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to dataTable (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+set(hObject,'ColumnWidth',{250, 250, 250,250,250});

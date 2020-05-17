@@ -4,10 +4,13 @@ xro = nan ;
 xrn = nan ;
 root= nan;
 i=0;
+row = {char(vpa(Xlower)), char(vpa(Xupper)), 'not assigned', 'not assigned', 'not assigned'};
+newData = row;
+root = newData ;
 funcLo = vpa(subs(func,Xlower));
 funcUp = vpa(subs(func,Xupper));
 funcMul = vpa(funcUp*funcLo) ;
-if(funcMul >0)
+if (funcMul >0)
     return ;
 end
 while isnan(xro)||isnan(xrn)||(i<=nOfItr&& abs(xro-xrn)>percision)
@@ -26,7 +29,15 @@ while isnan(xro)||isnan(xrn)||(i<=nOfItr&& abs(xro-xrn)>percision)
             break ;
         end
     end
+    if(isnan(xro))
+        row = {char(vpa(Xlower)), char(vpa(Xupper)), char(xrn), char(funNew), 'not assigned'};
+    else
+        row = {char(vpa(Xlower)), char(vpa(Xupper)), char(xrn), char(funNew), char(abs(xro-xrn))};
+    end
+    newData = [newData;row];
     i= i+1;
 end
-root = xrn ;
+row = {char(vpa(Xlower)), char(vpa(Xupper)), char(xrn), char(funNew), char(abs(xro-xrn))};
+newData = [newData;row];
+root = newData ;
 end
