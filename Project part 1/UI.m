@@ -219,10 +219,10 @@ names = get(handles.methodsChooser,'String');
 methodName = names{idx};
 nOfItr = handles.itr.String ;
 percision = handles.err.String ;
-Xupper =  handles.x1.String ;
-Xlower = handles.x2.String ;
+Xlower =  handles.x1.String ;
+Xupper = handles.x2.String ;
 func = handles.func.String;
-root = Main(func,methodName , nOfItr ,percision,Xupper,Xlower);
+root = Main(func,methodName , nOfItr ,percision,Xlower,Xupper);
 str = ['root = '  char(root)];%num2str(root)];
 set(handles.ans,'String',str);
 function itr_Callback(hObject, eventdata, handles)

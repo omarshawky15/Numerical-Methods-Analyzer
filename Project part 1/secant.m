@@ -1,4 +1,4 @@
-function root = secant(func , nOfItr,percision ,XiNew ,XiOld)
+function root = secant(func , nOfItr,percision ,XiOld,XiNew)
 fprintf('i    xi        xi1  funxi   funxi1       \tEr\n');
 i = 0;
 funcXiNew = vpa(subs(func ,XiNew));

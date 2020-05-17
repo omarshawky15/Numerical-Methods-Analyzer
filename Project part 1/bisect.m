@@ -1,4 +1,4 @@
-function root = bisect(func , nOfItr,percision ,Xupper, Xlower)
+function root = bisect(func , nOfItr,percision ,Xlower,Xupper)
 fprintf('i    Xupper  Xlower  Xrnew \tEr\t  f(Xr)\n');
 xro = nan ; xrn = nan ;
 i =0;
