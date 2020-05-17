@@ -108,11 +108,9 @@ idx = get(handles.methodsChooser,'Value');
 names = get(handles.methodsChooser,'String');
 name = names{idx};
 switch name
-    case '-'
-        set(handles.x1t,'String' ,'fuck1');
-    case 'Bisection'
-        set(handles.x1t,'String' ,'Xupper :');
-        set(handles.x2t,'String' ,'XLower :');
+    case {'Bisection', 'False-position','-'}
+        set(handles.x1t,'String' ,'Xlower :');
+        set(handles.x2t,'String' ,'Xupper :');
         set(handles.x2t,'Visible' ,'on');
         set(handles.x2,'Visible' ,'on');
     case 'Secant'
@@ -120,7 +118,7 @@ switch name
         set(handles.x2t,'String' ,'Xi+1 :');
         set(handles.x2t,'Visible' ,'on');
         set(handles.x2,'Visible' ,'on');
-    case {'False-position' , 'Newton-Raphson'}
+    case  'Newton-Raphson'
         set(handles.x1t,'String' ,'Xi :');
         set(handles.x2t,'Visible' ,'off');
         set(handles.x2,'Visible' ,'off');
@@ -223,7 +221,7 @@ Xlower =  handles.x1.String ;
 Xupper = handles.x2.String ;
 func = handles.func.String;
 root = Main(func,methodName , nOfItr ,percision,Xlower,Xupper);
-str = ['root = '  char(root)];%num2str(root)];
+str = ['root = '  char(root)];
 set(handles.ans,'String',str);
 function itr_Callback(hObject, eventdata, handles)
 % hObject    handle to itr (see GCBO)

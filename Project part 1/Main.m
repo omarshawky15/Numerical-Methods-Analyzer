@@ -4,19 +4,21 @@ Xlower= str2double(Xlower);
 if(isnan(Xlower))
     return ;
 end
-xl =nan;
-if(nargin ==6)
-    xl = str2double(Xupper);
-    if(isnan(xl))
-        return;
+if(~strcmp(methodName,'Newton-Raphson'))
+    Xupper = str2double(Xupper);
+    if(isnan(Xupper))
+        return ;
     end
 end
-Xupper = xl ;
 func = sym(func);
 nOfItr = str2num(nOfItr);
-if(isnan(nOfItr)||nOfItr <= 0 )nOfItr = 50;end
-percision =str2num(percision);
-if(isnan(percision)||nOfItr <= 0 )percision = 0.00001;end
+if(isnan(nOfItr)||nOfItr <= 0 )
+    nOfItr = 50;
+end
+percision =str2double(percision);
+if(isnan(percision) )
+    percision = 0.00001;
+end
 switch methodName
     case {'-','Bisection'}
         root= bisect(func , nOfItr,percision ,Xlower,Xupper);
@@ -25,6 +27,7 @@ switch methodName
     case 'Newton-Raphson'
         root = newton(func , nOfItr,percision ,Xlower);
     case {'False-position'}
+        root = false_position(func , nOfItr,percision ,Xlower,Xupper);
     otherwise
         disp('fuck');
 end
