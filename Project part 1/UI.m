@@ -123,7 +123,7 @@ switch name
         set(handles.x2t,'Visible' ,'off');
         set(handles.x2,'Visible' ,'off');
     otherwise
-        disp('fuck');
+        disp('megz');
 end
 % --- Executes during object creation, after setting all properties.
 function methodsChooser_CreateFcn(hObject, eventdata, handles)

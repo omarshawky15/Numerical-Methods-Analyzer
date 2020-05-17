@@ -29,6 +29,6 @@ switch methodName
     case {'False-position'}
         root = false_position(func , nOfItr,percision ,Xlower,Xupper);
     otherwise
-        disp('fuck');
+        disp('megz');
 end
 end
