@@ -1,8 +1,9 @@
-function root = false_position(func , nOfItr,percision ,Xlower,Xupper)
-fprintf('i    Xupper  Xlower  Xrnew \tEr\t  f(Xr)\n');
+function data = false_position(func , nOfItr,percision ,Xlower,Xupper)
+%fprintf('i    Xupper  Xlower  Xrnew \tEr\t  f(Xr)\n');
 xro = nan ;
 xrn = nan ;
-root = nan ;
+row = {char(vpa(Xlower)), char(vpa(Xupper)), 'not assigned', 'not assigned', 'not assigned'};
+data = row;
 i =0;
 funcLo = vpa(subs(func,Xlower));
 funcUp = vpa(subs(func,Xupper));
@@ -15,7 +16,7 @@ while isnan(xro)||isnan(xrn)||(i<=nOfItr&& abs(xro-xrn)>percision)
     xrn = (Xlower*funcUp-Xupper*funcLo)/(funcUp-funcLo);
     funcNew = vpa(subs(func,xrn));
     funcMul = vpa(funcNew*funcLo) ;
-    fprintf('%d\t%0.5f\t%0.5f\t%0.5f\t%0.5f\t%0.5f\n',i+1,Xupper,Xlower,xrn,abs(xro-xrn),funcNew);
+    %fprintf('%d\t%0.5f\t%0.5f\t%0.5f\t%0.5f\t%0.5f\n',i+1,Xupper,Xlower,xrn,abs(xro-xrn),funcNew);
     if funcMul < 0
         Xupper = xrn ;
         funcUp = funcNew;
@@ -27,7 +28,17 @@ while isnan(xro)||isnan(xrn)||(i<=nOfItr&& abs(xro-xrn)>percision)
             break ;
         end
     end
+    if(isnan(xro))
+        row = {char(vpa(Xlower)), char(vpa(Xupper)), char(xrn), char(funcNew), 'not assigned'};
+    else
+        row = {char(vpa(Xlower)), char(vpa(Xupper)), char(xrn), char(funcNew), char(abs(xro-xrn))};
+    end
+    data = [data;row];
     i= i+1;
 end
-root = xrn ;
+
+%row = {char(vpa(Xlower)), char(vpa(Xupper)), char(xrn), char(funcNew), char(abs(xro-xrn))};
+%data = [data;row];
+columnNames = {'Xlower' ,'Xupper' , 'Approximate root' , 'f(x)' , 'Epislon'};
+data ={data,columnNames};
 end

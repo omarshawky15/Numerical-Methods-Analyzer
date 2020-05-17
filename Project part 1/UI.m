@@ -220,10 +220,9 @@ percision = handles.err.String ;
 Xlower =  handles.x1.String ;
 Xupper = handles.x2.String ;
 func = handles.func.String;
-root = Main(func,methodName , nOfItr ,percision,Xlower,Xupper);
-set(handles.dataTable,'data',root);
-%str = ['root = '  char(root)];
-%set(handles.ans,'String',str);
+data = Main(func,methodName , nOfItr ,percision,Xlower,Xupper);
+set(handles.dataTable,'data',data{1});
+set(handles.dataTable,'ColumnName' , data{2});
 function itr_Callback(hObject, eventdata, handles)
 % hObject    handle to itr (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
