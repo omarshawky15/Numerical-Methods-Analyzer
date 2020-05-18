@@ -19,6 +19,16 @@ percision =str2double(percision);
 if(isnan(percision) )
     percision = 0.00001;
 end
+
+%plotting
+cla reset;
+ylim([-100 100])
+fplot(func);
+grid on ;
+hold on ;
+zoom on ;
+PlotAxisAtOrigin();
+
 switch methodName
     case {'-','Bisection'}
         root= bisect(func , nOfItr,percision ,Xlower,Xupper);

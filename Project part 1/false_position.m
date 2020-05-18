@@ -1,5 +1,4 @@
 function data = false_position(func , nOfItr,percision ,Xlower,Xupper)
-%fprintf('i    Xupper  Xlower  Xrnew \tEr\t  f(Xr)\n');
 xro = nan ;
 xrn = nan ;
 row = {char(vpa(Xlower)), char(vpa(Xupper)), 'not assigned', 'not assigned', 'not assigned'};
@@ -41,4 +40,5 @@ y = str2double(data(2:end,4));
 plot(x,y,'-x');
 columnNames = {'Xlower' ,'Xupper' , 'Approximate root' , 'f(x)' , 'Epislon'};
 data ={data,columnNames};
+data={data,char(xrn)};
 end

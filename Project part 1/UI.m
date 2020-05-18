@@ -220,9 +220,15 @@ percision = handles.err.String ;
 Xlower =  handles.x1.String ;
 Xupper = handles.x2.String ;
 func = handles.func.String;
+tic;
 data = Main(func,methodName , nOfItr ,percision,Xlower,Xupper);
+time = toc; 
 set(handles.dataTable,'data',data{1});
 set(handles.dataTable,'ColumnName' , data{2});
+set(handles.t,'String',time);
+set(handles.n,'String',nOfItr);
+set(handles.rt,'String',data{3});
+set(handles.prs,'String',percision);
 function itr_Callback(hObject, eventdata, handles)
 % hObject    handle to itr (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB

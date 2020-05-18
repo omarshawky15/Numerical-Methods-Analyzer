@@ -1,11 +1,4 @@
 function data = newton(func , nOfItr,percision ,Xi)
-cla reset;
-ylim([-100 100])
-fplot(func);
-grid on ;
-hold on ;
-zoom on
-PlotAxisAtOrigin()
 Xitemp = nan ;
 i = 0;
 firstDerv = diff(func);
@@ -30,5 +23,7 @@ y = str2double(data(2:end,3));
 plot(x,y,'-x');
 columnNames = {'Xi' ,'f(x)','f''(x)','f''''(x)', 'Epislon'};
 data ={data,columnNames};
+data={data,char(xrn)};
+
 end
 

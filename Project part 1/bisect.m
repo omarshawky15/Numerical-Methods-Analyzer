@@ -1,13 +1,4 @@
 function data = bisect(func , nOfItr,percision ,Xlower,Xupper)
-%plotting
-cla reset;
-ylim([-100 100])
-fplot(func);
-grid on ;
-hold on ;
-zoom on
-PlotAxisAtOrigin();
-
 xro = nan ;
 xrn = nan ;
 i=0;
@@ -47,4 +38,6 @@ y = str2double(data(2:end,4));
 plot(x,y,'-x');
 columnNames = {'Xlower' ,'Xupper' , 'Approximate root' , 'f(x)' , 'Epislon'};
 data ={data,columnNames};
+data=[data {char(xrn)}];
+
 end
