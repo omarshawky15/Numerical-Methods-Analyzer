@@ -1,5 +1,11 @@
 function data = newton(func , nOfItr,percision ,Xi)
-%fprintf('i    xi       funxi funxi1       \tEr\n');
+cla reset;
+ylim([-100 100])
+fplot(func);
+grid on ;
+hold on ;
+zoom on
+PlotAxisAtOrigin()
 Xitemp = nan ;
 i = 0;
 firstDerv = diff(func);
@@ -9,7 +15,6 @@ funcDerv1 = vpa(subs(firstDerv,Xi));
 funcDerv2 = vpa(subs(secondDerv,Xi));
 row = {char(vpa(Xi)),char(funcxi), char(funcDerv1), char(funcDerv2), 'not assigned'};
 data = row;
-%fprintf('%d\t%0.5f\t%0.5f\t%0.5f\t%0.5f\t%0.5f\n',i,Xi,funcxi,funcDerv1,funcDerv2,abs(Xi-Xitemp));
 while isnan(Xitemp)|| (i<nOfItr&&abs(Xi-Xitemp)>percision)
     i=i+1;
     Xitemp = Xi ;
@@ -19,10 +24,10 @@ while isnan(Xitemp)|| (i<nOfItr&&abs(Xi-Xitemp)>percision)
     funcDerv2 = vpa(subs(secondDerv ,Xi));
 row = {char(vpa(Xi)),char(funcxi), char(funcDerv1), char(funcDerv2), char(abs(Xi-Xitemp))};
     data = [data;row];
-    %fprintf('%d\t%0.5f\t%0.5f\t%0.5f\t%0.5f\t%0.5f\n',i,Xi,funcxi,funcDerv1,funcDerv2,abs(Xi-Xitemp));
 end
-%row = {char(vpa(Xi)),char(funcxi), char(funcDerv1), char(funcDerv2), char(abs(Xi-Xitemp))};
-%data = [data;row];
+x = str2double(data(2:end,1));
+y = str2double(data(2:end,3));
+plot(x,y,'-x');
 columnNames = {'Xi' ,'f(x)','f''(x)','f''''(x)', 'Epislon'};
 data ={data,columnNames};
 end

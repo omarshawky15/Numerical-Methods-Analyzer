@@ -1,5 +1,13 @@
 function data = bisect(func , nOfItr,percision ,Xlower,Xupper)
-%fprintf('i    Xupper  Xlower  Xrnew \tEr\t  f(Xr)\n');
+%plotting
+cla reset;
+ylim([-100 100])
+fplot(func);
+grid on ;
+hold on ;
+zoom on
+PlotAxisAtOrigin();
+
 xro = nan ;
 xrn = nan ;
 i=0;
@@ -16,7 +24,6 @@ while isnan(xro)||isnan(xrn)||(i<=nOfItr&& abs(xro-xrn)>percision)
     xrn = vpa((Xlower+Xupper)/2);
     funNew = vpa(subs(func,xrn));
     funMul = vpa(funNew*funcLo) ;
-    %fprintf('%d\t%0.5f\t%0.5f\t%0.5f\t%0.5f\t%0.5f\n',i+1,Xupper,Xlower,xrn,abs(xro-xrn),funNew);
     if funMul < 0
         Xupper = xrn ;
     else
@@ -35,8 +42,9 @@ while isnan(xro)||isnan(xrn)||(i<=nOfItr&& abs(xro-xrn)>percision)
     data = [data;row];
     i= i+1;
 end
-%row = {char(vpa(Xlower)), char(vpa(Xupper)), char(xrn), char(funNew), char(abs(xro-xrn))};
-%data = [data;row];
+x = str2double(data(2:end,3));
+y = str2double(data(2:end,4));
+plot(x,y,'-x');
 columnNames = {'Xlower' ,'Xupper' , 'Approximate root' , 'f(x)' , 'Epislon'};
 data ={data,columnNames};
 end

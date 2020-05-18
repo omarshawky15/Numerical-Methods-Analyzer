@@ -22,7 +22,7 @@ function varargout = UI(varargin)
 
 % Edit the above text to modify the response to help UI
 
-% Last Modified by GUIDE v2.5 17-May-2020 22:01:33
+% Last Modified by GUIDE v2.5 18-May-2020 00:48:20
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -250,4 +250,13 @@ function dataTable_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to dataTable (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
-set(hObject,'ColumnWidth',{250, 250, 250,250,250});
+set(hObject,'ColumnWidth',{200, 200, 200,200,200});
+
+
+% --- Executes during object creation, after setting all properties.
+function axes_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+axes(hObject);
+% Hint: place code in OpeningFcn to populate axes

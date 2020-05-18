@@ -36,9 +36,9 @@ while isnan(xro)||isnan(xrn)||(i<=nOfItr&& abs(xro-xrn)>percision)
     data = [data;row];
     i= i+1;
 end
-
-%row = {char(vpa(Xlower)), char(vpa(Xupper)), char(xrn), char(funcNew), char(abs(xro-xrn))};
-%data = [data;row];
+x = str2double(data(2:end,3));
+y = str2double(data(2:end,4));
+plot(x,y,'-x');
 columnNames = {'Xlower' ,'Xupper' , 'Approximate root' , 'f(x)' , 'Epislon'};
 data ={data,columnNames};
 end
