@@ -35,10 +35,10 @@ while isnan(xro)||isnan(xrn)||(i<=nOfItr&& abs(xro-xrn)>percision)
     data = [data;row];
     i= i+1;
 end
-x = str2double(data(2:end,3));
-y = str2double(data(2:end,4));
-plot(x,y,'-x');
+%x = str2double(data(2:end,3));
+%y = str2double(data(2:end,4));
+%plot(x,y,'-x');
 columnNames = {'Xlower' ,'Xupper' , 'Approximate root' , 'f(x)' , 'Epislon'};
 data ={data,columnNames};
-data={data,char(xrn)};
+data=[data {char(xrn) sprintf('%f',percision) sprintf('%d',i)}];
 end

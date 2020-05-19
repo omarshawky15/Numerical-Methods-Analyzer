@@ -14,12 +14,12 @@ while (i<nOfItr&& abs(XiOld-XiNew)>percision)
     row = {char(vpa(XiOld)), char(vpa(XiNew)),char(funcXiNew),char(funcXiOld), char(abs(XiOld-XiNew))};
     data =[data;row];
 end
-x = str2double(data(2:end,1));
-y = str2double(data(2:end,3));
-plot(x,y,'-x');
+%x = str2double(data(2:end,1));
+%y = str2double(data(2:end,3));
+%plot(x,y,'-x');
 columnNames = {'Xi' ,'Xi+1', 'f(Xi)','f(Xi+1)', 'Epislon'};
 data ={data,columnNames};
-data={data,char(xrn)};
+data=[data {char(XiNew) sprintf('%f',percision) sprintf('%d',i)}];
 
 end
 

@@ -22,7 +22,7 @@ function varargout = UI(varargin)
 
 % Edit the above text to modify the response to help UI
 
-% Last Modified by GUIDE v2.5 18-May-2020 00:48:20
+% Last Modified by GUIDE v2.5 19-May-2020 18:14:46
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -57,7 +57,6 @@ handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
-
 % UIWAIT makes UI wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
@@ -220,15 +219,19 @@ percision = handles.err.String ;
 Xlower =  handles.x1.String ;
 Xupper = handles.x2.String ;
 func = handles.func.String;
+%fig = gcf ;
+%if(fig == handles.figure1)
+    %fig = figure();
+%end;
 tic;
 data = Main(func,methodName , nOfItr ,percision,Xlower,Xupper);
 time = toc; 
 set(handles.dataTable,'data',data{1});
 set(handles.dataTable,'ColumnName' , data{2});
 set(handles.t,'String',time);
-set(handles.n,'String',nOfItr);
+set(handles.n,'String',data{5});
 set(handles.rt,'String',data{3});
-set(handles.prs,'String',percision);
+set(handles.prs,'String',data{4});
 function itr_Callback(hObject, eventdata, handles)
 % hObject    handle to itr (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -257,12 +260,8 @@ function dataTable_CreateFcn(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 set(hObject,'ColumnWidth',{200, 200, 200,200,200});
-
-
 % --- Executes during object creation, after setting all properties.
-function axes_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to axes (see GCBO)
+function figure1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to figure1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
-axes(hObject);
-% Hint: place code in OpeningFcn to populate axes

@@ -18,12 +18,12 @@ while isnan(Xitemp)|| (i<nOfItr&&abs(Xi-Xitemp)>percision)
 row = {char(vpa(Xi)),char(funcxi), char(funcDerv1), char(funcDerv2), char(abs(Xi-Xitemp))};
     data = [data;row];
 end
-x = str2double(data(2:end,1));
-y = str2double(data(2:end,3));
-plot(x,y,'-x');
+%x = str2double(data(2:end,1));
+%y = str2double(data(2:end,3));
+%plot(x,y,'-x');
 columnNames = {'Xi' ,'f(x)','f''(x)','f''''(x)', 'Epislon'};
 data ={data,columnNames};
-data={data,char(xrn)};
+data=[data {char(Xi) sprintf('%f',percision) sprintf('%d',i)}];
 
 end
 
