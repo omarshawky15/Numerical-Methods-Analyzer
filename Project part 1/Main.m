@@ -31,7 +31,6 @@ grid on ;
 hold on ;
 zoom on ;
 %}
-fig = gcf;
 switch methodName
     case {'-','Bisection'}
         figure('Name', char(func));
