@@ -221,14 +221,14 @@ Xupper = handles.x2.String ;
 func = handles.func.String;
 %fig = gcf ;
 %if(fig == handles.figure1)
-    %fig = figure();
+%fig = figure();
 %end;
 tic;
 set(handles.figure1, 'HandleVisibility', 'off');
 close all;
 data = Main(func,methodName , nOfItr ,percision,Xlower,Xupper);
 set(handles.figure1, 'HandleVisibility', 'on');
-time = toc; 
+time = toc;
 set(handles.dataTable,'data',data{1});
 set(handles.dataTable,'ColumnName' , data{2});
 set(handles.t,'String',time);

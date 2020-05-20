@@ -2,11 +2,13 @@ function root = Main (func,methodName , nOfItr ,percision,Xlower,Xupper)
 root = nan;
 Xlower= str2double(Xlower);
 if(isnan(Xlower))
+    warndlg('Xlower/Xi isn''t a valid value','Warning');
     return ;
 end
 if(~strcmp(methodName,'Newton-Raphson'))
     Xupper = str2double(Xupper);
     if(isnan(Xupper))
+        warndlg('Xupper/Xi+1 isn''t a valid value','Warning');
         return ;
     else
         Xtemp = Xupper ;

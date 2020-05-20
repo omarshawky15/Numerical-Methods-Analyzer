@@ -8,6 +8,7 @@ funcLo = vpa(subs(func,Xlower));
 funcUp = vpa(subs(func,Xupper));
 funcMul = vpa(funcUp*funcLo) ;
 if(funcMul >0)
+    warndlg('No root found between boundary limits','Warning');
     return ;
 end
 while isnan(xro)||isnan(xrn)||(i<=nOfItr&& abs(xro-xrn)>percision)
@@ -24,7 +25,9 @@ while isnan(xro)||isnan(xrn)||(i<=nOfItr&& abs(xro-xrn)>percision)
             Xlower = xrn ;
             funcLo = funcNew;
         else
-            break ;
+            row = {char(vpa(Xlower)), char(vpa(Xupper)), char(xrn), char(funNew), 'exact root found'};
+            data = [data;row];
+            break ; 
         end
     end
     if(isnan(xro))

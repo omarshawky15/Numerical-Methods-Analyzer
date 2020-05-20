@@ -15,7 +15,7 @@ while isnan(Xitemp)|| (i<nOfItr&&abs(Xi-Xitemp)>percision)
     funcxi = vpa(subs(func,Xi));
     funcDerv1 = vpa(subs(firstDerv, Xi));
     funcDerv2 = vpa(subs(secondDerv ,Xi));
-row = {char(vpa(Xi)),char(funcxi), char(funcDerv1), char(funcDerv2), char(abs(Xi-Xitemp))};
+    row = {char(vpa(Xi)),char(funcxi), char(funcDerv1), char(funcDerv2), char(abs(Xi-Xitemp))};
     data = [data;row];
 end
 %x = str2double(data(2:end,1));
