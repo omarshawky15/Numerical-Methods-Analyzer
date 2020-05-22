@@ -1,4 +1,8 @@
 function data = false_position(func , nOfItr,percision ,Xlower,Xupper)
+hold on ;
+grid on ;
+zoom on ;
+%ylim([-100 100]);
 xro = nan ;
 xrn = nan ;
 row = {char(vpa(Xlower)), char(vpa(Xupper)), 'not assigned', 'not assigned', 'not assigned'};
@@ -16,7 +20,10 @@ while isnan(xro)||isnan(xrn)||(i<=nOfItr&& abs(xro-xrn)>percision)
     xrn = (Xlower*funcUp-Xupper*funcLo)/(funcUp-funcLo);
     funcNew = vpa(subs(func,xrn));
     funcMul = vpa(funcNew*funcLo) ;
-    %fprintf('%d\t%0.5f\t%0.5f\t%0.5f\t%0.5f\t%0.5f\n',i+1,Xupper,Xlower,xrn,abs(xro-xrn),funcNew);
+    if(~isnan(xro))
+        plot([xro xro], [subs(func,xrn) subs(func,xro)], 'r-');
+        plot([xro xrn], [subs(func,xrn) subs(func,xrn)], 'r--');
+    end;
     if funcMul < 0
         Xupper = xrn ;
         funcUp = funcNew;
@@ -41,6 +48,7 @@ end
 %x = str2double(data(2:end,3));
 %y = str2double(data(2:end,4));
 %plot(x,y,'-x');
+plot(xrn ,funcNew ,'x');
 columnNames = {'Xlower' ,'Xupper' , 'Approximate root' , 'f(x)' , 'Epislon'};
 data ={data,columnNames};
 data=[data {char(xrn) sprintf('%f',percision) sprintf('%d',i)}];

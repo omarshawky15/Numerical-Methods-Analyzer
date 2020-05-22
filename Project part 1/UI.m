@@ -121,7 +121,7 @@ switch name
         set(handles.x1t,'String' ,'Xi :');
         set(handles.x2t,'Visible' ,'off');
         set(handles.x2,'Visible' ,'off');
-        case 'Fixed-Point'
+    case 'Fixed-Point'
         set(handles.ST1, 'String', 'Enter g(x) function');
         set(handles.x1t,'String' ,'Xi :');
         set(handles.x2t,'Visible' ,'off');
@@ -219,11 +219,11 @@ function btn_Callback(hObject, eventdata, handles)
 idx = get(handles.methodsChooser,'Value');
 names = get(handles.methodsChooser,'String');
 methodName = names{idx};
-nOfItr = get(handles.itr, 'string') ;
-percision = get(handles.err, 'string') ;
-Xlower =  get(handles.x1, 'string') ;
-Xupper = get(handles.x2, 'string') ;
-func = get(handles.func, 'string');
+nOfItr = handles.itr.String ;
+percision = handles.err.String ;
+Xlower =  handles.x1.String ;
+Xupper = handles.x2.String ;
+func = handles.func.String;
 %fig = gcf ;
 %if(fig == handles.figure1)
 %fig = figure();
@@ -267,7 +267,7 @@ function dataTable_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to dataTable (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
-set(hObject,'ColumnWidth',{132, 132, 132,132,133});
+set(hObject,'ColumnWidth',{200, 200, 200,200,200});
 % --- Executes during object creation, after setting all properties.
 function figure1_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to figure1 (see GCBO)

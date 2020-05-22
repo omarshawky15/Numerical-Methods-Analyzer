@@ -5,7 +5,7 @@ if(isnan(Xlower))
     warndlg('Xlower/Xi isn''t a valid value','Warning');
     return ;
 end
-if(~(strcmp(methodName,'Newton-Raphson') || strcmp(methodName, 'Fixed-Point')))
+if(~strcmp(methodName,'Newton-Raphson') && ~strcmp(methodName, 'Fixed-Point'))
     Xupper = str2double(Xupper);
     if(isnan(Xupper))
         warndlg('Xupper/Xi+1 isn''t a valid value','Warning');
@@ -25,19 +25,20 @@ percision =str2double(percision);
 if(isnan(percision) )
     percision = 0.00001;
 end
-
 switch methodName
     case {'-','Bisection'}
         figure('Name', char(func));
-        fplot(inline(func),[Xlower-2 Xupper+2]);
+        fplot(func,[Xlower-2 Xupper+2]);
         root= bisect(func , nOfItr,percision ,Xlower,Xupper);
     case  'Secant'
         figure('Name' , char(diff(func)));
         fplot(diff(func),[Xlower-2 Xupper+2]);
+        %fplot(func,[Xlower Xupper]);
         root = secant(func , nOfItr,percision ,Xlower,Xupper);
     case 'Newton-Raphson'
         figure('Name' , char(diff(func)));
         fplot(diff(func),[Xlower-2 Xlower+2]);
+        %fplot(func,[Xlower Xupper]);
         root = newton(func , nOfItr,percision ,Xlower);
     case {'False-position'}
         figure('Name' , char(func));
