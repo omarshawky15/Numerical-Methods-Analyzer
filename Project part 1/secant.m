@@ -27,7 +27,7 @@ end
 plot(XiNew ,subs(funcDerv1,XiNew) ,'x');
 columnNames = {'Xi' ,'Xi+1', 'f(Xi)','f(Xi+1)', 'Epislon'};
 data ={data,columnNames};
-data=[data {char(XiNew) sprintf('%f',percision) sprintf('%d',i)}];
+data=[data {char(XiNew) char(abs(XiOld-XiNew)) sprintf('%d',i)}];
 
 end
 

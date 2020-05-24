@@ -20,7 +20,7 @@ function data = fixed_point(func, nOfItr, precision, Xi)
         i = i + 1;
     end
     data = {data colNames};
-    data =  [data {char(vpa(nextXi)) sprintf('%f',precision) sprintf('%d',i)}];
+    data =  [data {char(vpa(nextXi)) abs(Xi - nextXi) sprintf('%d',i)}];
 end
 
 function answer = g(func, x)

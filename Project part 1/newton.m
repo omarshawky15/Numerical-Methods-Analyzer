@@ -30,7 +30,7 @@ end
 plot(Xi ,funcDerv1 ,'x');
 columnNames = {'Xi' ,'f(x)','f''(x)','f''''(x)', 'Epislon'};
 data ={data,columnNames};
-data=[data {char(Xi) sprintf('%f',percision) sprintf('%d',i)}];
+data=[data {char(Xi) char(abs(Xi-Xitemp)) sprintf('%d',i)}];
 
 end
 

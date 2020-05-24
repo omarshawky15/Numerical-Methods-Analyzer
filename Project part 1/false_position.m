@@ -51,5 +51,5 @@ end
 plot(xrn ,funcNew ,'x');
 columnNames = {'Xlower' ,'Xupper' , 'Approximate root' , 'f(x)' , 'Epislon'};
 data ={data,columnNames};
-data=[data {char(xrn) sprintf('%f',percision) sprintf('%d',i)}];
+data=[data {char(xrn) char(abs(xro-xrn)) sprintf('%d',i)}];
 end
